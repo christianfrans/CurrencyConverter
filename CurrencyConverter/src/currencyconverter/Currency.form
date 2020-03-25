@@ -217,6 +217,9 @@
           <Dimension value="[74, 32]"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_clearActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

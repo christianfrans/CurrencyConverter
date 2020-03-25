@@ -5,9 +5,8 @@
  */
 package currencyconverter;
 
-import java.text.DecimalFormat;
-import javax.swing.JComboBox;
-import javax.swing.JOptionPane;
+import currencyconverter.Logic.Logic;
+import currencyconverter.Model.ModelProgram;
 
 /**
  *
@@ -15,13 +14,13 @@ import javax.swing.JOptionPane;
  */
 public class Currency extends javax.swing.JFrame {
 
-	JComboBox c1, c2;
-
 	/**
 	 * Creates new form Login
 	 */
 	public Currency() {
 		initComponents();
+		ModelProgram modelProgram = new ModelProgram();
+		label_result.setText(modelProgram.output);
 		setLocationRelativeTo(this);
 	}
 
@@ -103,6 +102,11 @@ public class Currency extends javax.swing.JFrame {
         btn_clear.setText("Clear");
         btn_clear.setMaximumSize(new java.awt.Dimension(74, 32));
         btn_clear.setMinimumSize(new java.awt.Dimension(74, 32));
+        btn_clear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_clearActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -171,85 +175,129 @@ public class Currency extends javax.swing.JFrame {
 
     private void btn_convertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_convertActionPerformed
 		// TODO add your handling code here:
-		c1 = cb_input;
-		c2 = cb_output;
+		String a = (String) cb_input.getSelectedItem();
+        String b = (String) cb_output.getSelectedItem();
+        String enterInput = tf_input.getText();
+        
+        int input = Integer.parseInt(enterInput);
+        
+        ModelProgram modelProgram = new ModelProgram();
+        modelProgram.setInput(input);
+        
+        Logic logic = new Logic();
+		
+		if (a.equals("Rupiah")&&b.equals("Rupiah"))
+        {
+            String result = logic.idr_to_idr(modelProgram);
+            label_result.setText(result);
+        }
+		
+		else if (a.equals("Rupiah")&&b.equals("Euro"))
+        {
+            String result = logic.idr_to_eur(modelProgram);
+            label_result.setText(result);
+        }
+		
+		else if (a.equals("Rupiah")&&b.equals("Dollar"))
+        {
+            String result = logic.idr_to_usd(modelProgram);
+            label_result.setText(result);
+        }
+		
+		else if (a.equals("Rupiah")&&b.equals("Yen"))
+        {
+            String result = logic.idr_to_jpy(modelProgram);
+            label_result.setText(result);
+        }
+		
+		else if (a.equals("Euro")&&b.equals("Euro"))
+        {
+            String result = logic.eur_to_eur(modelProgram);
+            label_result.setText(result);
+        }
+		
+		else if (a.equals("Euro")&&b.equals("Rupiah"))
+        {
+            String result = logic.eur_to_idr(modelProgram);
+            label_result.setText(result);
+        }
+		
+		else if (a.equals("Euro")&&b.equals("Dollar"))
+        {
+            String result = logic.eur_to_usd(modelProgram);
+            label_result.setText(result);
+        }
+		
+		else if (a.equals("Euro")&&b.equals("Yen"))
+        {
+            String result = logic.eur_to_jpy(modelProgram);
+            label_result.setText(result);
+        }
+		
+		else if (a.equals("Dollar")&&b.equals("Dollar"))
+        {
+            String result = logic.usd_to_usd(modelProgram);
+            label_result.setText(result);
+        }
+		
+		else if (a.equals("Dollar")&&b.equals("Rupiah"))
+        {
+            String result = logic.usd_to_idr(modelProgram);
+            label_result.setText(result);
+        }
+		
+		else if (a.equals("Dollar")&&b.equals("Euro"))
+        {
+            String result = logic.usd_to_eur(modelProgram);
+            label_result.setText(result);
+        }
+		
+		else if (a.equals("Dollar")&&b.equals("Yen"))
+        {
+            String result = logic.usd_to_jpy(modelProgram);
+            label_result.setText(result);
+        }
+		
+		else if (a.equals("Yen")&&b.equals("Yen"))
+        {
+            String result = logic.jpy_to_jpy(modelProgram);
+            label_result.setText(result);
+        }
+		
+		else if (a.equals("Yen")&&b.equals("Rupiah"))
+        {
+            String result = logic.jpy_to_idr(modelProgram);
+            label_result.setText(result);
+        }
+		
+		else if (a.equals("Yen")&&b.equals("Euro"))
+        {
+            String result = logic.jpy_to_eur(modelProgram);
+            label_result.setText(result);
+        }
+		
+		else if (a.equals("Yen")&&b.equals("Dollar"))
+        {
+            String result = logic.jpy_to_usd(modelProgram);
+            label_result.setText(result);
+        }
 
-		float a, b, c = 0;
-		a = Float.valueOf(tf_input.getText());
-		DecimalFormat angka = new DecimalFormat("###,###");
-		try {
-			if (c1.getSelectedIndex() == 0 & c2.getSelectedIndex() == 1) {
-				c = (float) (a * 0.000056);
-				tf_input.setText("IDR " + angka.format(a));
-				label_result.setText("EUR " + angka.format(c));
-			}
-			if (c1.getSelectedIndex() == 0 & c2.getSelectedIndex() == 2) {
-				c = (float) (a * 0.000061);
-				tf_input.setText("IDR " + angka.format(a));
-				label_result.setText("USD " + angka.format(c));
-			}
-			if (c1.getSelectedIndex() == 0 & c2.getSelectedIndex() == 3) {
-				c = (float) (a * 0.0067);
-				tf_input.setText("IDR " + angka.format(a));
-				label_result.setText("JPY " + angka.format(c));
-			}
-
-			if (c1.getSelectedIndex() == 1 & c2.getSelectedIndex() == 0) {
-				c = a * 17819;
-				tf_input.setText("EUR " + angka.format(a));
-				label_result.setText("IDR " + angka.format(c));
-			}
-			if (c1.getSelectedIndex() == 1 & c2.getSelectedIndex() == 2) {
-				c = (float) (a * 1.08);
-				tf_input.setText("EUR " + angka.format(a));
-				label_result.setText("USD " + angka.format(c));
-			}
-			if (c1.getSelectedIndex() == 1 & c2.getSelectedIndex() == 3) {
-				c = (float) (a * 119.39);
-				tf_input.setText("EUR " + angka.format(a));
-				label_result.setText("JPY " + angka.format(c));
-			}
-
-			if (c1.getSelectedIndex() == 2 & c2.getSelectedIndex() == 0) {
-				c = a * 16474;
-				tf_input.setText("USD " + angka.format(a));
-				label_result.setText("IDR " + angka.format(c));
-			}
-			if (c1.getSelectedIndex() == 2 & c2.getSelectedIndex() == 1) {
-				c = (float) (a * 0.92);
-				tf_input.setText("USD " + angka.format(a));
-				label_result.setText("EUR " + angka.format(c));
-			}
-			if (c1.getSelectedIndex() == 2 & c2.getSelectedIndex() == 3) {
-				c = (float) (a * 110.36);
-				tf_input.setText("USD " + angka.format(a));
-				label_result.setText("JPY " + angka.format(c));
-			}
-
-			if (c1.getSelectedIndex() == 3 & c2.getSelectedIndex() == 0) {
-				c = (float) (a * 149.28);
-				tf_input.setText("JPY " + angka.format(a));
-				label_result.setText("IDR " + angka.format(c));
-			}
-			if (c1.getSelectedIndex() == 3 & c2.getSelectedIndex() == 1) {
-				c = (float) (a * 0.0084);
-				tf_input.setText("JPY " + angka.format(a));
-				label_result.setText("EUR " + angka.format(c));
-			}
-			if (c1.getSelectedIndex() == 3 & c2.getSelectedIndex() == 2) {
-				c = (float) (a * 0.0091);
-				tf_input.setText("JPY " + angka.format(a));
-				label_result.setText("USD " + angka.format(c));
-			}
-		} catch (Exception error) {
-			System.out.println("Error");
-		}
     }//GEN-LAST:event_btn_convertActionPerformed
 
     private void tf_inputKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tf_inputKeyPressed
         // TODO add your handling code here:
 		
     }//GEN-LAST:event_tf_inputKeyPressed
+
+    private void btn_clearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_clearActionPerformed
+        // TODO add your handling code here:
+		ModelProgram modelProgram = new ModelProgram();
+		
+		modelProgram.setInput(0);
+		
+		tf_input.setText("");
+		label_result.setText("0");
+    }//GEN-LAST:event_btn_clearActionPerformed
 
 	/**
 	 * @param args the command line arguments
