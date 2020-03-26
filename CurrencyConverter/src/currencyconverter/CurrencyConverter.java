@@ -18,7 +18,7 @@ public class CurrencyConverter {
 		// TODO code application logic here
 		InputName frame = new InputName();
 		frame.setVisible(true);
-		frame.setLayout(null);
+		frame.setResizable(false);
 	}
 	
 }

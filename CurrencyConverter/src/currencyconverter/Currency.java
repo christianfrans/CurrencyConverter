@@ -7,6 +7,9 @@ package currencyconverter;
 
 import currencyconverter.Logic.Logic;
 import currencyconverter.Model.ModelProgram;
+import static java.awt.image.ImageObserver.HEIGHT;
+import java.text.DecimalFormat;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -46,6 +49,7 @@ public class Currency extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         label_result = new javax.swing.JLabel();
         btn_clear = new javax.swing.JButton();
+        btn_exit = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -108,6 +112,13 @@ public class Currency extends javax.swing.JFrame {
             }
         });
 
+        btn_exit.setText("Exit");
+        btn_exit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_exitActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -140,10 +151,15 @@ public class Currency extends javax.swing.JFrame {
                 .addContainerGap(114, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btn_clear, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_convert))
-                .addGap(187, 187, 187))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btn_clear, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn_convert))
+                        .addGap(187, 187, 187))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(btn_exit)
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -167,7 +183,9 @@ public class Currency extends javax.swing.JFrame {
                     .addComponent(label_result))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btn_clear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 122, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 84, Short.MAX_VALUE)
+                .addComponent(btn_exit)
+                .addContainerGap())
         );
 
         pack();
@@ -176,128 +194,107 @@ public class Currency extends javax.swing.JFrame {
     private void btn_convertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_convertActionPerformed
 		// TODO add your handling code here:
 		String a = (String) cb_input.getSelectedItem();
-        String b = (String) cb_output.getSelectedItem();
-        String enterInput = tf_input.getText();
-        
-        int input = Integer.parseInt(enterInput);
-        
-        ModelProgram modelProgram = new ModelProgram();
-        modelProgram.setInput(input);
-        
-        Logic logic = new Logic();
-		
-		if (a.equals("Rupiah")&&b.equals("Rupiah"))
-        {
-            String result = logic.idr_to_idr(modelProgram);
-            label_result.setText(result);
-        }
-		
-		else if (a.equals("Rupiah")&&b.equals("Euro"))
-        {
-            String result = logic.idr_to_eur(modelProgram);
-            label_result.setText(result);
-        }
-		
-		else if (a.equals("Rupiah")&&b.equals("Dollar"))
-        {
-            String result = logic.idr_to_usd(modelProgram);
-            label_result.setText(result);
-        }
-		
-		else if (a.equals("Rupiah")&&b.equals("Yen"))
-        {
-            String result = logic.idr_to_jpy(modelProgram);
-            label_result.setText(result);
-        }
-		
-		else if (a.equals("Euro")&&b.equals("Euro"))
-        {
-            String result = logic.eur_to_eur(modelProgram);
-            label_result.setText(result);
-        }
-		
-		else if (a.equals("Euro")&&b.equals("Rupiah"))
-        {
-            String result = logic.eur_to_idr(modelProgram);
-            label_result.setText(result);
-        }
-		
-		else if (a.equals("Euro")&&b.equals("Dollar"))
-        {
-            String result = logic.eur_to_usd(modelProgram);
-            label_result.setText(result);
-        }
-		
-		else if (a.equals("Euro")&&b.equals("Yen"))
-        {
-            String result = logic.eur_to_jpy(modelProgram);
-            label_result.setText(result);
-        }
-		
-		else if (a.equals("Dollar")&&b.equals("Dollar"))
-        {
-            String result = logic.usd_to_usd(modelProgram);
-            label_result.setText(result);
-        }
-		
-		else if (a.equals("Dollar")&&b.equals("Rupiah"))
-        {
-            String result = logic.usd_to_idr(modelProgram);
-            label_result.setText(result);
-        }
-		
-		else if (a.equals("Dollar")&&b.equals("Euro"))
-        {
-            String result = logic.usd_to_eur(modelProgram);
-            label_result.setText(result);
-        }
-		
-		else if (a.equals("Dollar")&&b.equals("Yen"))
-        {
-            String result = logic.usd_to_jpy(modelProgram);
-            label_result.setText(result);
-        }
-		
-		else if (a.equals("Yen")&&b.equals("Yen"))
-        {
-            String result = logic.jpy_to_jpy(modelProgram);
-            label_result.setText(result);
-        }
-		
-		else if (a.equals("Yen")&&b.equals("Rupiah"))
-        {
-            String result = logic.jpy_to_idr(modelProgram);
-            label_result.setText(result);
-        }
-		
-		else if (a.equals("Yen")&&b.equals("Euro"))
-        {
-            String result = logic.jpy_to_eur(modelProgram);
-            label_result.setText(result);
-        }
-		
-		else if (a.equals("Yen")&&b.equals("Dollar"))
-        {
-            String result = logic.jpy_to_usd(modelProgram);
-            label_result.setText(result);
-        }
+		String b = (String) cb_output.getSelectedItem();
+		String enterInput = tf_input.getText();
+
+		double masukan = Double.parseDouble(tf_input.getText());
+		tf_input.setText(Double.toString(masukan));
+		DecimalFormat angka = new DecimalFormat("###,###");
+
+		if (a.equals("Rupiah")) {
+			tf_input.setText("IDR " + angka.format(masukan));
+		} else if (a.equals("Euro")) {
+			tf_input.setText("EUR " + angka.format(masukan));
+		} else if (a.equals("Dollar")) {
+			tf_input.setText("USD " + angka.format(masukan));
+		} else if (a.equals("Yen")) {
+			tf_input.setText("JPY " + angka.format(masukan));
+		}
+
+		int input = Integer.parseInt(enterInput);
+
+		ModelProgram modelProgram = new ModelProgram();
+		modelProgram.setInput(input);
+
+		Logic logic = new Logic();
+
+		if (a.equals("Rupiah") && b.equals("Rupiah")) {
+			String result = logic.idr_to_idr(modelProgram);
+			label_result.setText(result);
+		} else if (a.equals("Rupiah") && b.equals("Euro")) {
+			String result = logic.idr_to_eur(modelProgram);
+			label_result.setText(result);
+		} else if (a.equals("Rupiah") && b.equals("Dollar")) {
+			String result = logic.idr_to_usd(modelProgram);
+			label_result.setText(result);
+		} else if (a.equals("Rupiah") && b.equals("Yen")) {
+			String result = logic.idr_to_jpy(modelProgram);
+			label_result.setText(result);
+		} else if (a.equals("Euro") && b.equals("Euro")) {
+			String result = logic.eur_to_eur(modelProgram);
+			label_result.setText(result);
+		} else if (a.equals("Euro") && b.equals("Rupiah")) {
+			String result = logic.eur_to_idr(modelProgram);
+			label_result.setText(result);
+		} else if (a.equals("Euro") && b.equals("Dollar")) {
+			String result = logic.eur_to_usd(modelProgram);
+			label_result.setText(result);
+		} else if (a.equals("Euro") && b.equals("Yen")) {
+			String result = logic.eur_to_jpy(modelProgram);
+			label_result.setText(result);
+		} else if (a.equals("Dollar") && b.equals("Dollar")) {
+			String result = logic.usd_to_usd(modelProgram);
+			label_result.setText(result);
+		} else if (a.equals("Dollar") && b.equals("Rupiah")) {
+			String result = logic.usd_to_idr(modelProgram);
+			label_result.setText(result);
+		} else if (a.equals("Dollar") && b.equals("Euro")) {
+			String result = logic.usd_to_eur(modelProgram);
+			label_result.setText(result);
+		} else if (a.equals("Dollar") && b.equals("Yen")) {
+			String result = logic.usd_to_jpy(modelProgram);
+			label_result.setText(result);
+		} else if (a.equals("Yen") && b.equals("Yen")) {
+			String result = logic.jpy_to_jpy(modelProgram);
+			label_result.setText(result);
+		} else if (a.equals("Yen") && b.equals("Rupiah")) {
+			String result = logic.jpy_to_idr(modelProgram);
+			label_result.setText(result);
+		} else if (a.equals("Yen") && b.equals("Euro")) {
+			String result = logic.jpy_to_eur(modelProgram);
+			label_result.setText(result);
+		} else if (a.equals("Yen") && b.equals("Dollar")) {
+			String result = logic.jpy_to_usd(modelProgram);
+			label_result.setText(result);
+		}
 
     }//GEN-LAST:event_btn_convertActionPerformed
 
     private void tf_inputKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tf_inputKeyPressed
-        // TODO add your handling code here:
-		
+		// TODO add your handling code here:
     }//GEN-LAST:event_tf_inputKeyPressed
 
     private void btn_clearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_clearActionPerformed
-        // TODO add your handling code here:
+		// TODO add your handling code here:
 		ModelProgram modelProgram = new ModelProgram();
-		
+
 		modelProgram.setInput(0);
-		
-		tf_input.setText("");
+
+		tf_input.setText("0");
 		label_result.setText("0");
+		tf_input.requestFocus();
     }//GEN-LAST:event_btn_clearActionPerformed
+
+    private void btn_exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_exitActionPerformed
+		// TODO add your handling code here:
+		int dialog = JOptionPane.showOptionDialog(this, "Are you sure?", "Exit",
+				JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
+
+		if (dialog == JOptionPane.YES_OPTION) {
+			JOptionPane.showMessageDialog(this, "Thank you for using this program");
+			System.exit(0);
+		}
+    }//GEN-LAST:event_btn_exitActionPerformed
 
 	/**
 	 * @param args the command line arguments
@@ -338,6 +335,7 @@ public class Currency extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_clear;
     private javax.swing.JButton btn_convert;
+    private javax.swing.JButton btn_exit;
     private javax.swing.JComboBox<String> cb_input;
     private javax.swing.JComboBox<String> cb_output;
     private javax.swing.JLabel jLabel1;

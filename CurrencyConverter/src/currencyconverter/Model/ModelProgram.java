@@ -13,7 +13,7 @@ import java.text.DecimalFormat;
  * @author user
  */
 public class ModelProgram {
-	public String output = "0";
+	public String output = "";
 	private double input;
 	double a = 0;
 	double b = 0;
@@ -29,7 +29,7 @@ public class ModelProgram {
 	double jpy_to_idr = 149.28;
 	double jpy_to_eur = 0.0084;
 	double jpy_to_usd = 0.0091;
-	
+
 	public void setInput(double input) {
 		this.input = input;
 	}

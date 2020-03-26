@@ -14,14 +14,16 @@ import javax.swing.JOptionPane;
  * @author user
  */
 public class InputName extends javax.swing.JFrame {
+
 	public String name;
 	Logic logic = new Logic();
+
 	/**
 	 * Creates new form InputName
 	 */
 	public InputName() {
 		initComponents();
-		setLocationRelativeTo(this);
+		setLocationRelativeTo(this); //BUAT FRAME DITENGAH
 	}
 
 	/**
@@ -36,6 +38,7 @@ public class InputName extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         tf_name = new javax.swing.JTextField();
         btn_submit = new javax.swing.JButton();
+        btn_exit = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -64,10 +67,17 @@ public class InputName extends javax.swing.JFrame {
 
         jLabel4.setText("Name :");
 
-        btn_submit.setText("Submit");
+        btn_submit.setText("Login");
         btn_submit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_submitActionPerformed(evt);
+            }
+        });
+
+        btn_exit.setText("Exit");
+        btn_exit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_exitActionPerformed(evt);
             }
         });
 
@@ -78,14 +88,14 @@ public class InputName extends javax.swing.JFrame {
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addGap(101, 101, 101)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel4)
+                .addComponent(jLabel4)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btn_submit, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(tf_name, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(btn_submit)
-                        .addGap(63, 63, 63)))
+                        .addComponent(btn_exit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(tf_name, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -96,33 +106,46 @@ public class InputName extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(tf_name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(btn_submit)
-                .addGap(0, 39, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_submit)
+                    .addComponent(btn_exit))
+                .addGap(0, 45, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_submitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_submitActionPerformed
-        // TODO add your handling code here:
+		// TODO add your handling code here:
 		String name = tf_name.getText();
 		Boolean check_name = logic.checkName(name);
 
 		if (!check_name) {
 			JOptionPane.showMessageDialog(rootPane,
-					 "Please input alphanumeric name only!",
-					 "Message", HEIGHT);
+					"Please input alphabet name only!",
+					"Message", HEIGHT);
 			tf_name.setText("");
 			tf_name.requestFocus();
 		} else {
 			JOptionPane.showMessageDialog(rootPane, "Login success");
 			SplashScreen gui = new SplashScreen();
 			this.setVisible(false);
-            new SplashScreen().setVisible(true);
+			new SplashScreen().setVisible(true);
 			dispose();
 		}
     }//GEN-LAST:event_btn_submitActionPerformed
+
+    private void btn_exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_exitActionPerformed
+		// TODO add your handling code here:
+		int dialog = JOptionPane.showOptionDialog(this, "Are you sure?", "Exit",
+				JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
+
+		if (dialog == JOptionPane.YES_OPTION) {
+			JOptionPane.showMessageDialog(this, "Thank you for using this program");
+			System.exit(0);
+		}
+    }//GEN-LAST:event_btn_exitActionPerformed
 
 	/**
 	 * @param args the command line arguments
@@ -160,13 +183,10 @@ public class InputName extends javax.swing.JFrame {
 	}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_exit;
     private javax.swing.JButton btn_submit;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JTextField tf_name;
     // End of variables declaration//GEN-END:variables

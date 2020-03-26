@@ -14,39 +14,40 @@ import javax.swing.Timer;
  * @author user
  */
 public class SplashScreen extends javax.swing.JFrame {
- Timer waktu;
-    ActionListener action;
-    Currency cur;
+
+	Timer waktu;
+	ActionListener action;
+	Currency MainFrame;
 	/**
 	 * Creates new form SplashScreen
 	 */
 	String name;
+
 	public SplashScreen() {
 		initComponents();
 		aksi();
-        waktu = new Timer(100,action);
-        waktu.start();
+		waktu = new Timer(100, action);
+		waktu.start();
 		setLocationRelativeTo(this);
 	}
-	
-	public void aksi(){
-        action = new ActionListener() {
-            
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                loadBar.setValue(loadBar.getValue()+5);
-                loadBar.setStringPainted(true);
-                if(loadBar.getPercentComplete()==1.0){
-                    waktu.stop();
-                    cur = new Currency();
-                    cur.setVisible(true);
-                    dispose();
-                }
-            }
-        };
-        
-    }
-	
+
+	public void aksi() {
+		action = new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				loadBar.setValue(loadBar.getValue() + 5);
+				loadBar.setStringPainted(true);
+				if (loadBar.getPercentComplete() == 1.0) {
+					waktu.stop();
+					Currency MainFrame = new Currency();
+					MainFrame.setVisible(true);
+					dispose();
+				}
+			}
+		};
+
+	}
 
 	SplashScreen(String name) {
 		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
