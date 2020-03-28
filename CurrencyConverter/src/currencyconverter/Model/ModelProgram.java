@@ -5,30 +5,27 @@
  */
 package currencyconverter.Model;
 
-import currencyconverter.Currency;
-import java.text.DecimalFormat;
-
 /**
  *
  * @author user
  */
 public class ModelProgram {
-	public String output = "";
+	public String output = "0";
 	private double input;
-	double a = 0;
-	double b = 0;
+	public double a = 0;
+	public double b = 0;
 	double idr_to_eur = 0.000056;
-	double idr_to_usd = 0.000061;
+	double idr_to_usd = 0.000062;
 	double idr_to_jpy = 0.0067;
-	double eur_to_idr = 17819;
-	double eur_to_usd = 1.08;
-	double eur_to_jpy = 119.39;
-	double usd_to_idr = 16474;
-	double usd_to_eur = 0.92;
-	double usd_to_jpy = 110.36;
-	double jpy_to_idr = 149.28;
+	double eur_to_idr = 17818;
+	double eur_to_usd = 1.10;
+	double eur_to_jpy = 119.80;
+	double usd_to_idr = 16182;
+	double usd_to_eur = 0.91;
+	double usd_to_jpy = 108.78;
+	double jpy_to_idr = 148.78;
 	double jpy_to_eur = 0.0084;
-	double jpy_to_usd = 0.0091;
+	double jpy_to_usd = 0.0092;
 
 	public void setInput(double input) {
 		this.input = input;
@@ -142,195 +139,11 @@ public class ModelProgram {
 		return output;
 	}
 	
-	public void idr_to_idr(double a){
-		double output = a;
-		String total = "IDR " + output;
-		setOutput(total);
+	public double calculate(double a){
+		return a;
 	}
 	
-	public void idr_to_idr(int a){
-		int output = a;
-		String total = "IDR " + output;
-		setOutput(total);
-	}
-	
-	public void idr_to_eur(double a, double b){
-		double output = a * b;
-		String total = "EUR " + output;
-		setOutput(total);
-	}
-	
-	public void idr_to_eur(int a,int b){
-		int output = a * b;
-		String total = "EUR " + output;
-		setOutput(total);
-	}
-	
-	public void idr_to_usd(double a, double b){
-		double output = a * b;
-		String total = "USD " + output;
-		setOutput(total);
-	}
-	
-	public void idr_to_usd(int a, int b){
-		int output = a * b;
-		String total = "USD " + output;
-		setOutput(total);
-	}
-	
-	public void idr_to_jpy(double a, double b){
-		double output = a * b;
-		String total = "JPY " + output;
-		setOutput(total);
-	}
-	
-	public void idr_to_jpy(int a, int b){
-		int output = a * b;
-		String total = "JPY " + output;
-		setOutput(total);
-	}
-	
-	public void eur_to_eur(double a){
-		double output = a;
-		String total = "EUR " + output;
-		setOutput(total);
-	}
-	
-	public void eur_to_eur(int a){
-		int output = a;
-		String total = "EUR " + output;
-		setOutput(total);
-	}
-	
-	public void eur_to_idr(double a, double b){
-		double output = a * b;
-		String total = "IDR " + output;
-		setOutput(total);
-	}
-	
-	public void eur_to_idr(int a,int b){
-		int output = a * b;
-		String total = "IDR " + output;
-		setOutput(total);
-	}
-	
-	public void eur_to_usd(double a, double b){
-		double output = a * b;
-		String total = "USD " + output;
-		setOutput(total);
-	}
-	
-	public void eur_to_usd(int a, int b){
-		int output = a * b;
-		String total = "USD " + output;
-		setOutput(total);
-	}
-	
-	public void eur_to_jpy(double a, double b){
-		double output = a * b;
-		String total = "JPY " + output;
-		setOutput(total);
-	}
-	
-	public void eur_to_jpy(int a, int b){
-		int output = a * b;
-		String total = "JPY " + output;
-		setOutput(total);
-	}
-	
-	public void usd_to_usd(double a){
-		double output = a;
-		String total = "USD " + output;
-		setOutput(total);
-	}
-	
-	public void usd_to_usd(int a){
-		int output = a;
-		String total = "USD " + output;
-		setOutput(total);
-	}
-	
-	public void usd_to_idr(double a, double b){
-		double output = a * b;
-		String total = "IDR " + output;
-		setOutput(total);
-	}
-	
-	public void usd_to_idr(int a,int b){
-		int output = a * b;
-		String total = "IDR " + output;
-		setOutput(total);
-	}
-	
-	public void usd_to_eur(double a, double b){
-		double output = a * b;
-		String total = "EUR " + output;
-		setOutput(total);
-	}
-	
-	public void usd_to_eur(int a, int b){
-		int output = a * b;
-		String total = "EUR " + output;
-		setOutput(total);
-	}
-	
-	public void usd_to_jpy(double a, double b){
-		double output = a * b;
-		String total = "JPY " + output;
-		setOutput(total);
-	}
-	
-	public void usd_to_jpy(int a, int b){
-		int output = a * b;
-		String total = "JPY " + output;
-		setOutput(total);
-	}
-	
-		public void jpy_to_jpy(double a){
-		double output = a;
-		String total = "JPY " + output;
-		setOutput(total);
-	}
-	
-	public void jpy_to_jpy(int a){
-		int output = a;
-		String total = "JPY " + output;
-		setOutput(total);
-	}
-	
-	public void jpy_to_idr(double a, double b){
-		double output = a * b;
-		String total = "IDR " + output;
-		setOutput(total);
-	}
-	
-	public void jpy_to_idr(int a,int b){
-		int output = a * b;
-		String total = "IDR " + output;
-		setOutput(total);
-	}
-	
-	public void jpy_to_eur(double a, double b){
-		double output = a * b;
-		String total = "EUR " + output;
-		setOutput(total);
-	}
-	
-	public void jpy_to_eur(int a, int b){
-		int output = a * b;
-		String total = "EUR " + output;
-		setOutput(total);
-	}
-	
-	public void jpy_to_usd(double a, double b){
-		double output = a * b;
-		String total = "USD " + output;
-		setOutput(total);
-	}
-	
-	public void jpy_to_usd(int a, int b){
-		int output = a * b;
-		String total = "USD " + output;
-		setOutput(total);
+	public double calculate(double a, double b){
+		return a * b;
 	}
 }

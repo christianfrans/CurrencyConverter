@@ -129,9 +129,9 @@ public class InputName extends javax.swing.JFrame {
 			tf_name.requestFocus();
 		} else {
 			JOptionPane.showMessageDialog(rootPane, "Login success");
-			SplashScreen gui = new SplashScreen();
+			Currency currency = new Currency(name);
 			this.setVisible(false);
-			new SplashScreen().setVisible(true);
+			currency.setVisible(true);
 			dispose();
 		}
     }//GEN-LAST:event_btn_submitActionPerformed

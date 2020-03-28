@@ -5,10 +5,9 @@
  */
 package currencyconverter;
 
+import currencyconverter.Logic.Calculation;
 import currencyconverter.Logic.Logic;
 import currencyconverter.Model.ModelProgram;
-import static java.awt.image.ImageObserver.HEIGHT;
-import java.text.DecimalFormat;
 import javax.swing.JOptionPane;
 
 /**
@@ -16,19 +15,22 @@ import javax.swing.JOptionPane;
  * @author user
  */
 public class Currency extends javax.swing.JFrame {
-
+	
 	/**
 	 * Creates new form Login
 	 */
 	public Currency() {
 		initComponents();
-		ModelProgram modelProgram = new ModelProgram();
-		label_result.setText(modelProgram.output);
 		setLocationRelativeTo(this);
 	}
-
-	Currency(String name) {
-		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+	
+	String name;
+	public Currency(String name) {
+		initComponents();
+		Logic logic = new Logic();
+		label_result.setText(logic.output);
+		this.name = name;
+		label_name.setText(name);
 	}
 
 	/**
@@ -50,6 +52,8 @@ public class Currency extends javax.swing.JFrame {
         label_result = new javax.swing.JLabel();
         btn_clear = new javax.swing.JButton();
         btn_exit = new javax.swing.JButton();
+        label_name = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -65,7 +69,7 @@ public class Currency extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(121, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(117, 117, 117))
         );
@@ -119,53 +123,70 @@ public class Currency extends javax.swing.JFrame {
             }
         });
 
+        label_name.setToolTipText("");
+        label_name.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        jLabel5.setText("Welcome to Ü-Money");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addGap(107, 107, 107)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(label_result))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(47, 47, 47)
-                            .addComponent(jLabel2))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(cb_input, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(tf_input, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addGap(45, 45, 45)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                    .addComponent(cb_output, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(52, 52, 52))
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                    .addComponent(jLabel3)
-                                    .addGap(30, 30, 30))))))
-                .addContainerGap(114, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btn_clear, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btn_convert))
-                        .addGap(187, 187, 187))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(btn_exit)
-                        .addContainerGap())))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btn_exit))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(104, 104, 104)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(btn_clear, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btn_convert))
+                                .addGap(73, 73, 73))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabel4)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(label_result))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(cb_input, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(tf_input, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addGap(45, 45, 45)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                .addComponent(cb_output, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(52, 52, 52))
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                .addComponent(jLabel3)
+                                                .addGap(30, 30, 30))))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(47, 47, 47)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(label_name, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel2))))))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(168, 168, 168)
+                .addComponent(jLabel5)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(54, 54, 54)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel5)
+                .addGap(8, 8, 8)
+                .addComponent(label_name, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -183,12 +204,13 @@ public class Currency extends javax.swing.JFrame {
                     .addComponent(label_result))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btn_clear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 84, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
                 .addComponent(btn_exit)
                 .addContainerGap())
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_convertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_convertActionPerformed
@@ -196,28 +218,18 @@ public class Currency extends javax.swing.JFrame {
 		String a = (String) cb_input.getSelectedItem();
 		String b = (String) cb_output.getSelectedItem();
 		String enterInput = tf_input.getText();
-
-		double masukan = Double.parseDouble(tf_input.getText());
-		tf_input.setText(Double.toString(masukan));
-		DecimalFormat angka = new DecimalFormat("###,###");
-
-		if (a.equals("Rupiah")) {
-			tf_input.setText("IDR " + angka.format(masukan));
-		} else if (a.equals("Euro")) {
-			tf_input.setText("EUR " + angka.format(masukan));
-		} else if (a.equals("Dollar")) {
-			tf_input.setText("USD " + angka.format(masukan));
-		} else if (a.equals("Yen")) {
-			tf_input.setText("JPY " + angka.format(masukan));
-		}
-
+		
+		Logic logic = new Logic();
+		ModelProgram modelProgram = new ModelProgram();
+		
+		clear();
+		
 		int input = Integer.parseInt(enterInput);
 
-		ModelProgram modelProgram = new ModelProgram();
 		modelProgram.setInput(input);
-
-		Logic logic = new Logic();
-
+		
+		Calculation calculation = new Calculation();
+		
 		if (a.equals("Rupiah") && b.equals("Rupiah")) {
 			String result = logic.idr_to_idr(modelProgram);
 			label_result.setText(result);
@@ -267,7 +279,8 @@ public class Currency extends javax.swing.JFrame {
 			String result = logic.jpy_to_usd(modelProgram);
 			label_result.setText(result);
 		}
-
+		
+		tf_input.setText(enterInput);
     }//GEN-LAST:event_btn_convertActionPerformed
 
     private void tf_inputKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tf_inputKeyPressed
@@ -276,6 +289,10 @@ public class Currency extends javax.swing.JFrame {
 
     private void btn_clearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_clearActionPerformed
 		// TODO add your handling code here:
+		clear();
+    }//GEN-LAST:event_btn_clearActionPerformed
+	
+	void clear(){
 		ModelProgram modelProgram = new ModelProgram();
 
 		modelProgram.setInput(0);
@@ -283,8 +300,8 @@ public class Currency extends javax.swing.JFrame {
 		tf_input.setText("0");
 		label_result.setText("0");
 		tf_input.requestFocus();
-    }//GEN-LAST:event_btn_clearActionPerformed
-
+	}
+	
     private void btn_exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_exitActionPerformed
 		// TODO add your handling code here:
 		int dialog = JOptionPane.showOptionDialog(this, "Are you sure?", "Exit",
@@ -342,7 +359,9 @@ public class Currency extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel label_name;
     private javax.swing.JLabel label_result;
     private javax.swing.JTextField tf_input;
     // End of variables declaration//GEN-END:variables
