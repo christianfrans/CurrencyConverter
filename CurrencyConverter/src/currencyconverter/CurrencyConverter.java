@@ -20,5 +20,5 @@ public class CurrencyConverter {
 		frame.setVisible(true);
 		frame.setResizable(false);
 	}
-	
+
 }

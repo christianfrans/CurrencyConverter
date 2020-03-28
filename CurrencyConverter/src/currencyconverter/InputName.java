@@ -33,39 +33,22 @@ public class InputName extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel3 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        tf_name = new javax.swing.JTextField();
+        jPanel1 = new javax.swing.JPanel();
         btn_submit = new javax.swing.JButton();
         btn_exit = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        tf_name = new javax.swing.JTextField();
+        background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(462, 252));
+        setMinimumSize(new java.awt.Dimension(462, 252));
+        setUndecorated(true);
+        setResizable(false);
 
-        jPanel3.setBackground(new java.awt.Color(102, 204, 255));
-
-        jLabel3.setFont(new java.awt.Font("Century", 1, 48)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Ü-Money");
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(121, Short.MAX_VALUE)
-                .addComponent(jLabel3)
-                .addGap(117, 117, 117))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel3)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        jLabel4.setText("Name :");
+        jPanel1.setMaximumSize(new java.awt.Dimension(462, 252));
+        jPanel1.setMinimumSize(new java.awt.Dimension(462, 252));
+        jPanel1.setLayout(null);
 
         btn_submit.setText("Login");
         btn_submit.addActionListener(new java.awt.event.ActionListener() {
@@ -73,6 +56,8 @@ public class InputName extends javax.swing.JFrame {
                 btn_submitActionPerformed(evt);
             }
         });
+        jPanel1.add(btn_submit);
+        btn_submit.setBounds(280, 130, 60, 32);
 
         btn_exit.setText("Exit");
         btn_exit.addActionListener(new java.awt.event.ActionListener() {
@@ -80,37 +65,29 @@ public class InputName extends javax.swing.JFrame {
                 btn_exitActionPerformed(evt);
             }
         });
+        jPanel1.add(btn_exit);
+        btn_exit.setBounds(360, 130, 60, 32);
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel4.setText("Name :");
+        jPanel1.add(jLabel4);
+        jLabel4.setBounds(220, 90, 50, 30);
+        jPanel1.add(tf_name);
+        tf_name.setBounds(280, 90, 140, 30);
+
+        background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/currencyconverter/christ2.jpg"))); // NOI18N
+        jPanel1.add(background);
+        background.setBounds(0, 0, 462, 252);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(101, 101, 101)
-                .addComponent(jLabel4)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btn_submit, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btn_exit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(tf_name, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(72, 72, 72)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(tf_name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_submit)
-                    .addComponent(btn_exit))
-                .addGap(0, 45, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -183,11 +160,11 @@ public class InputName extends javax.swing.JFrame {
 	}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel background;
     private javax.swing.JButton btn_exit;
     private javax.swing.JButton btn_submit;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField tf_name;
     // End of variables declaration//GEN-END:variables
 }
