@@ -109,12 +109,12 @@ public class Currency extends javax.swing.JFrame {
 
         jLabel4.setText("Converted Amount :");
         jPanel2.add(jLabel4);
-        jLabel4.setBounds(230, 230, 220, 16);
+        jLabel4.setBounds(140, 280, 220, 16);
 
         label_result.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         label_result.setText("-");
         jPanel2.add(label_result);
-        label_result.setBounds(330, 230, 90, 16);
+        label_result.setBounds(330, 280, 90, 16);
 
         btn_clear.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btn_clear.setForeground(new java.awt.Color(102, 102, 0));
@@ -127,7 +127,7 @@ public class Currency extends javax.swing.JFrame {
             }
         });
         jPanel2.add(btn_clear);
-        btn_clear.setBounds(230, 270, 80, 40);
+        btn_clear.setBounds(230, 310, 80, 40);
 
         btn_exit.setForeground(new java.awt.Color(102, 102, 0));
         btn_exit.setText("Exit");
@@ -137,7 +137,7 @@ public class Currency extends javax.swing.JFrame {
             }
         });
         jPanel2.add(btn_exit);
-        btn_exit.setBounds(381, 430, 70, 32);
+        btn_exit.setBounds(380, 420, 70, 32);
 
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/currencyconverter/christ1.jpg"))); // NOI18N
         jPanel2.add(background);

@@ -22,12 +22,6 @@ public class Logic extends ModelProgram{
 		return matchername.matches();
 	}
 
-	public Boolean checkInput(String enterInput) {
-		Pattern pattern = Pattern.compile("[0-9]+");
-		Matcher matcherinput = pattern.matcher(enterInput);
-		return matcherinput.matches();
-	}
-
 	public String idr_to_idr(ModelProgram modelProgram) {
 		Calculation calculation = new Calculation();
 		double result = calculation.calculate(modelProgram.getInput());
